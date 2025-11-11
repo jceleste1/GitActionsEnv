@@ -1,4 +1,4 @@
-name: CD Fake
+name: CD Fake Env
 on: 
     workflow_dispatch: 
 jobs:
