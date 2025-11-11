@@ -3,7 +3,7 @@ on:
     workflow_dispatch: 
         inputs:
             ambiente:
-                type: choide
+                type: choice
                 options:
                     - develop
                     - homologacao
