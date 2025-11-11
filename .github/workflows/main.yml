@@ -9,7 +9,7 @@ on:
                     - homologacao
                     - producao
 jobs:
-    deploy-fake:
+    deploy-fake-homologacao:
         runs-on: ubuntu-latest
         environment: ${{ inputs.ambiente }}
         steps:
@@ -18,12 +18,14 @@ jobs:
     teste-fake:
         runs-on: ubuntu-latest
         environment: ${{ inputs.ambiente }}
+        needs: [deploy-fake-homologacao]
         steps:
             - name: Fake de deploy em ambiente
               run: echo "Deploy no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"
     producao-deploy-fake:
         runs-on: ubuntu-latest
         environment: ${{ inputs.ambiente }}
+        needs: [teste-fake]
         steps:
             - name: Fake de deploy em ambiente
               run: echo "Deploy no ambiente de ${{ vars.AMBIENTE_DEPLOY }}"
